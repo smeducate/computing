@@ -68,4 +68,34 @@ One or two data examples are usually sufficient for simple atomic data.
 
 When creating example/tests for a specific function operating on simple atomic data at least one test case will be required. Additional tests are required if there are multiple cases involved. If the function produces Boolean there needs to be at least a true and false test case. Also be on the lookout for cases where a number of some form is an interval in disguise, for example given a type comment like Countdown is Natural, in some functions 0 is likely to be a special case.
 
+#### Intervals
+
+Use an interval when the information to be represented is numbers within a certain range. Integer[0, 10] is all the integers from 0 to 10 inclusive; Number[0, 10) is all the numbers from 0 inclusive to 10 exclusive. (The notation is that [ and ] mean that the end of the interval includes the end point; ( and ) mean that the end of the interval does not include the end point.)
+
+Intervals often appear in itemizations, but can also appear alone, as in:
+```racket
+;; Countdown is Integer[0, 10]
+;; interp. the number of seconds remaining to liftoff
+(define C1 10)  ; start
+(define C2 5)   ; middle
+(define C3 0)   ; end
+ 
+#;
+(define (fn-for-countdown cd)
+  (... cd))
+
+;; Template rules used:
+;;  - atomic non-distinct: Integer[0, 10]
+```
+
+##### Forming the Template
+
+As noted below the template, it is formed according to the Data Driven Templates recipe using the right hand column of the atomic non-distinct rule.
+
+##### Guidance on Data Examples and Function Example/Tests
+
+For data examples provide sufficient examples to illustrate how the type represents information. The three data examples above are probably more than is needed in that case.
+
+When writing tests for functions operating on intervals be sure to test closed boundaries as well as midpoints. As always, be sure to include enough tests to check all other points of variance in behaviour across the interval.
+
 
