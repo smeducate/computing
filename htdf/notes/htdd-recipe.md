@@ -177,3 +177,66 @@ Defer writing templates for such large enumerations until a template is needed f
 
 The same is true of writing tests for functions operating on large enumerations. All the specially handled cases must be tested, in addition one more test is required to check the else clause.
 
+#### Itemizations
+
+An itemization describes data comprised of 2 or more subclasses, at least one of which is not a distinct item. (C.f. enumerations, where the subclasses are all distinct items.) In an itemization the template is similar to that for enumerations: a cond with one clause per subclass. In cases where the subclass of data has its own data definition the answer part of the cond clause includes a call to a helper template, in other cases it just includes the parameter.
+
+```racket
+;; Bird is one of:
+;;  - false
+;;  - Number
+;; interp. false means no bird, number is x position of bird
+
+(define B1 false)
+(define B2 3) 
+
+#;
+(define (fn-for-bird b)
+  (cond [(false? b) (...)]
+        [(number? b) (... b)]))
+;; Template rules used:
+;;  - one of: 2 cases
+;;  - atomic distinct: false
+;;  - atomic non-distinct: Number
+```
+
+##### Forming the Template
+
+As noted below the template, it is formed according to the Data Driven Templates recipe using the one-of rule, the atomic distinct rule and the atomic non-distinct rule in order.
+
+##### Guidance on Data Examples and Function Example/Tests
+
+As always, itemizations should have enough data examples to clearly illustrate how the type represents information.
+
+Functions operating on itemizations should have at least as many tests as there are cases in the itemizations. If there are intervals in the itemization, then there should be tests at all points of variance in the interval. In the case of adjoining intervals it is critical to test the boundaries.
+
+##### Itemization of Intervals
+
+A common case is for the itemization to be comprised of 2 or more intervals. In this case functions operating on the data definition will usually need to be tested at all the boundaries of closed intervals and points between the boundaries.
+
+```racket
+;;; Reading is one of:
+;;  - Number[> 30]      
+;;  - Number(5, 30]     
+;;  - Number[0, 5]      
+;; interp. distance in centimeters from bumper to obstacle
+;;    Number[> 30]    is considered "safe"
+;;    Number(5, 30]   is considered "warning"
+;;    Number[0, 5]    is considered "dangerous"
+(define R1 40)
+(define R2 .9)
+
+(define (fn-for-reading r)
+  (cond [(< 30 r) (... r)]
+        [(and (<  5 r) (<= r  30)) (... r)]
+        [(<= 0 r 5) (... r)]))
+
+;; Template rules used:
+;;  one-of: 3 cases
+;;  atomic non-distinct:  Number[>30]
+;;  atomic non-distinct:  Number(5, 30]
+;;  atomic non-distinct:  Number[0, 5]
+```
+
+As noted below the template, it is formed according to the Data Driven Templates recipe using the one-of rule, followed by 3 uses of the atomic non-distinct rule.
+
