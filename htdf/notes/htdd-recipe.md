@@ -35,11 +35,11 @@ The remainder of this page lists in detail different kinds of data definition th
 | --- | --- |
 | is atomic | [Simple Atomic Data](#simple-atomic-data)|
 | is numbers within a certain range | [Intervals](#intervals)|
-| consists of a fixed number of distinct items | [Enumeration](#enumeration)|
-| is comprised of 2 or more subclasses, at least one of which is not a distinct item | Itemization|
-| consists of two or more items that naturally belong together | Compound Data|
-| is naturally composed of different parts | References to other defined type|
-| is of arbitrary (unknown) size | self-referential or mutually referential|
+| consists of a fixed number of distinct items | [Enumerations](#enumerations)|
+| is comprised of 2 or more subclasses, at least one of which is not a distinct item | [Itemization](#itemization)|
+| consists of two or more items that naturally belong together | [Compound Data](#compound-data)|
+| is naturally composed of different parts | [References to other defined type](#references-to-other-defined-type)|
+| is of arbitrary (unknown) size | [self-referential or mutually referential](self-referential-or-mutually-referential)|
 
 #### Simple Atomic Data
 
