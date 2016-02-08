@@ -31,7 +31,7 @@ One of the most important points in the course is that:
 
 The remainder of this page lists in detail different kinds of data definition that are used to represent information with different structures. The page also shows in detail how to design a data definition of each kind. This summary table provides a quick reference to which kind of data definition to use for different information structures.
 
-| Command | Description |
+| When the form of the information to be represented... | Use a data definition of this kind |
 | --- | --- |
 | `git status` | List all *new or modified* files |
 | `git diff` | Show file differences that **haven't been** staged |
