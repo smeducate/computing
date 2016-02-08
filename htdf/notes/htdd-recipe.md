@@ -98,4 +98,64 @@ For data examples provide sufficient examples to illustrate how the type represe
 
 When writing tests for functions operating on intervals be sure to test closed boundaries as well as midpoints. As always, be sure to include enough tests to check all other points of variance in behaviour across the interval.
 
+#### Enumerations
 
+Use an enumeration when the information to be represented consists of a fixed number of distinct items, such as colors, letter grades etc. The data used for an enumeration could in principle be anything - strings, integers, images even. But we always use strings. In the case of enumerations it is sometimes redundant to provide an interpretation and nearly always redundant to provide examples. The example below includes the interpretation but not the examples.
+
+```racket
+;; LightState is one of:
+;;  - "red"
+;;  - "yellow"
+;;  - "green"
+;; interp. the color of a traffic light
+
+;; <examples are redundant for enumerations>
+ 
+#;
+(define (fn-for-light-state ls)
+  (cond [(string=? "red" ls) (...)]
+        [(string=? "yellow" ls) (...)]
+        [(string=? "green" ls) (...)]))
+;; Template rules used:
+;;  - one of: 3 cases
+;;  - atomic distinct: "red"
+;;  - atomic distinct: "yellow"
+;;  - atomic distinct: "green"
+```
+
+##### Forming the Template
+
+As noted below the template, it is formed according to the Data Driven Templates recipe as follows:
+
+First, LightState is an enumeration with 3 cases, so the one of rule says to use a cond with 3 cases:
+
+```racket
+(define (fn-for-tlcolor ls)
+  (cond [Q1 A1]
+        [Q2 A2]
+        [Q3 A3])) 
+```
+
+In the first clause, "red" is a distinct atomic value, so the cond question column of the atomic distinct rule says Q1 should be (string=? ls "red"). The cond answer column says A1 should be (...). So we have:
+
+```racket
+(define (fn-for-light-state ls)
+  (cond [(string=? "red" ls) (...)]
+        [Q2 A2]
+        [Q3 A3])) 
+```
+
+Then "yellow" and "green" are also distinct atomic values, so the final template is:
+
+```racket
+(define (fn-for-light-state ls) 
+  (cond [(string=? "red" ls) (...)]
+        [(string=? "yellow" ls) (...)]
+        [(string=? "green" ls) (...)]))
+```
+
+Guidance on Data Examples and Function Example/Tests
+
+Data examples are redundant for enumerations.
+
+Functions operating on enumerations should have (at least) as many tests as there are cases in the enumeration.
