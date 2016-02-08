@@ -41,3 +41,31 @@ The remainder of this page lists in detail different kinds of data definition th
 | is naturally composed of different parts | References to other defined type|
 | is of arbitrary (unknown) size | self-referential or mutually referential|
 
+#### Simple Atomic Data
+
+Use simple atomic data when the information to be represented is itself atomic in form, such as the elapsed time since the start of the animation, the x coordinate of a car or the name of a cat.
+
+```racket
+;; Time is Natural
+;; interp. number of clock ticks since start of game
+
+(define START-TIME 0)
+(define OLD-TIME 1000)
+
+#;
+(define (fn-for-time t)
+  (... t))
+
+;; Template rules used:
+;;  - atomic non-distinct: Natural
+```
+##### Forming the Template
+As noted below the template, it is formed according to the Data Driven Templates recipe using the right hand column of the atomic non-distinct rule.
+
+##### Guidance on Data Examples and Function Example/Tests
+
+One or two data examples are usually sufficient for simple atomic data.
+
+When creating example/tests for a specific function operating on simple atomic data at least one test case will be required. Additional tests are required if there are multiple cases involved. If the function produces Boolean there needs to be at least a true and false test case. Also be on the lookout for cases where a number of some form is an interval in disguise, for example given a type comment like Countdown is Natural, in some functions 0 is likely to be a special case.
+
+
