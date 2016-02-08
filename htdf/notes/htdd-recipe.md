@@ -159,3 +159,21 @@ Guidance on Data Examples and Function Example/Tests
 Data examples are redundant for enumerations.
 
 Functions operating on enumerations should have (at least) as many tests as there are cases in the enumeration.
+
+#### Large Enumerations
+
+Some enumerations contain a large number of elements. A canonical example is KeyEvent, which is provided as part of big-bang. KeyEvent includes all the letters of the alphabet as well as other keys you can press on the keyboard. It is not necessary to write out all the cases for such a data definition. Instead write one or two, as well as a comment saying what the others are, where they are defined etc.
+
+Defer writing templates for such large enumerations until a template is needed for a specific function. At that point include the specific cases that function cares about. Be sure to include an else clause in the template to handle the other cases. As an example, some functions operating on KeyEvent may only care about the space key and just ignore all other keys, the following would be an appropriate template for such functions.
+
+```racket
+#;
+(define (fn-for-key-event kevt)
+  (cond [(key=? " " kevt) (...)]
+        [else
+         (...)]))
+;; Template formed using the large enumeration special case
+```
+
+The same is true of writing tests for functions operating on large enumerations. All the specially handled cases must be tested, in addition one more test is required to check the else clause.
+
