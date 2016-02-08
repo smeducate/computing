@@ -33,9 +33,9 @@ The remainder of this page lists in detail different kinds of data definition th
 
 | When the form of the information to be represented... | Use a data definition of this kind |
 | --- | --- |
-| is atomic | [Simple Atomic Data](#simple)|
+| is atomic | [Simple Atomic Data](#simple-atomic-data)|
 | is numbers within a certain range | [Intervals](#intervals)|
-| consists of a fixed number of distinct items | Enumeration|
+| consists of a fixed number of distinct items | [Enumeration](#enumeration)|
 | is comprised of 2 or more subclasses, at least one of which is not a distinct item | Itemization|
 | consists of two or more items that naturally belong together | Compound Data|
 | is naturally composed of different parts | References to other defined type|
