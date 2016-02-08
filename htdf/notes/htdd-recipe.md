@@ -40,4 +40,4 @@ The remainder of this page lists in detail different kinds of data definition th
 | consists of two or more items that naturally belong together | Compound Data|
 | is naturally composed of different parts | References to other defined type|
 | is of arbitrary (unknown) size | self-referential or mutually referential|
-| `git diff` | Show file differences that **haven't been** staged |
+
