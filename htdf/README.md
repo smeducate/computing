@@ -1,10 +1,8 @@
 #### [SPD1x Systematic Program Design - Part 1](https://courses.edx.org/courses/course-v1:UBCx+SPD1x+1T2016/77860a93562d40bda45e452ea064998b/)
 
-- [My Notes]()
-
-- [Problems I have solved so far]()
-
-- [HTDD How to define data]()
+1. [My Notes](notes)
+2. [Problems I have solved so far](problems)
+3. [HTDD How to define data](htdd)
 
 ####Resources
 1. [The Racket Guide](https://docs.racket-lang.org/guide/index.html)
