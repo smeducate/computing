@@ -2,7 +2,7 @@
 
 ##### My Solutions to 99 problems in Racket
 
-1. [List Problems]()
+1. [List Problems](lists)
 2. [Arithmetic]()
 3. [Logic and Codes]()
 4. [Binary Trees]()
