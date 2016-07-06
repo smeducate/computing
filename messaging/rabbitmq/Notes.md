@@ -25,5 +25,5 @@ Traceback (most recent call last):
   File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py", line 810, in __bootstrap_inner
     self.run()
 ```
-Resolution: start docker-compose with the following option
+Resolution: start docker-compose with the following option in order to run it as a service in the background
 docker-compose up -d
