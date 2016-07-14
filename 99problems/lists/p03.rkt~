@@ -31,7 +31,6 @@
 (check-expect (element-at-match '(a) 3) null)
 (check-expect (element-at-match '() 4) null)
 
-;defined using  pattern matching in Racket
 (define (element-at-match xs n)
   (match xs
     ['() empty]

@@ -1,0 +1,17 @@
+{
+    "elements": {},
+    "attributes": {
+        "th:text": {
+            "context": "span"
+        },
+        "th:unless": {
+            "context": "div"
+        },
+        "th:href": {
+            "context": "link"
+        },
+        "th:each": {
+            "context": "dl"
+        }
+    }
+}
