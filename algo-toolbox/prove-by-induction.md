@@ -10,3 +10,5 @@
   Prove that the equation holds for p(k+1)
   
 - Therefore the proof is complete
+
+[](http://www.coolmath.com/algebra/19-sequences-series/09-mathematical-induction-03)
