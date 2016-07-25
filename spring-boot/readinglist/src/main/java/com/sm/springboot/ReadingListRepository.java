@@ -19,3 +19,4 @@ public interface ReadingListRepository extends JpaRepository<Book, Long>{
     
     List<Book> findByreader(String reader);
 }
+    

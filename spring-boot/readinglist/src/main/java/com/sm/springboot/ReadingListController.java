@@ -30,7 +30,7 @@ public class ReadingListController {
     @Autowired
     public ReadingListController(ReadingListRepository repo) {
         this.readingListRepo = repo;
-    }
+}
     
     @RequestMapping(value="/{reader}", method=RequestMethod.GET)
     public String readersBooks(@PathVariable("reader") String reader, Model model) {
