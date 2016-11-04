@@ -9,5 +9,6 @@
 5. [Multiway Trees]()
 6. [Graphs]()
 7. [Miscellaneous Problems]()
+8. [Project Euler](https://github.com/nayuki/Project-Euler-solutions)
 
 [](https://github.com/shekhargulati/99-problems)
