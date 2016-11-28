@@ -12,6 +12,49 @@
 #include "mpc.h"
 
 
+/**
+ * Use the operator string to see and evaluate the numeric expression.
+ */
+long eval_op(long first, char* op, long second ) {
+   if(strcmp(op, "+") == 0 ) { return first + second; }
+   if(strcmp(op, "-") == 0 ) { return first - second; }
+   if(strcmp(op, "*") == 0 ) { return first * second; }
+   if(strcmp(op, "/") == 0 ) { return first / second; }
+   return 0;
+}
+
+/**
+ * Evaluates the contents of an AST.
+ *
+ * if the tag of an expression is a number, then we have a leaf and it always
+ * evaluates to a number.
+ *
+ * if the tag of an expression is a EXPR then it starts with a  "(", followed by
+ *  an operator and maybe another expression or number. An expression ends with a )
+ *
+ */
+long eval(mpc_ast_t* t) {
+
+   /** If tagged as a number then return the number. */
+   if(strstr(t->tag,"number" )) {
+       return(atoi(t->contents));
+   }
+
+   /** the operator is always the second child. */
+   char* operator = t->children[1]->contents;
+
+   /** Store the third child and evaluate. */
+   long  x  = eval(t->children[2]);
+
+   int i = 3; //Start iterating from the third children.
+   while(strstr(t->children[i]->tag, "expr")) {
+      x = eval_op(x, operator, eval(t->children[i]));
+      i++;
+   }
+
+   return x;
+}
+
 
 int main(int argc, char** argv) {
 
@@ -46,13 +89,8 @@ int main(int argc, char** argv) {
         /** Parse user input for lispy. */
         mpc_result_t r;
         if(mpc_parse("<stdin>",input,Lispy, &r)) {
-            /** On success print and delete the AST. */
-            mpc_ast_t*  a = r.output;
-            printf("Tag: %s\n", a->tag);
-            printf("Contents: %s\n", a->contents);
-            printf("Number of children: %i\n", a->children_num);
-            mpc_ast_print(r.output);
-            mpc_ast_delete(r.output);
+            long result = eval(r.output);
+            printf("%li\n",result);
         } else {
             /** Otherwise print and delete the error. */
             mpc_err_print(r.error);
