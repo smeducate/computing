@@ -89,6 +89,7 @@ int main(int argc, char** argv) {
         /** Parse user input for lispy. */
         mpc_result_t r;
         if(mpc_parse("<stdin>",input,Lispy, &r)) {
+            mpc_ast_print(r.output);
             long result = eval(r.output);
             printf("%li\n",result);
         } else {
@@ -96,9 +97,6 @@ int main(int argc, char** argv) {
             mpc_err_print(r.error);
             mpc_err_delete(r.error);
         }
-
-        /** Echo input back to the user.*/
-        printf("No you are a %s\n", input);
 
         /** free memory for input. */
         free(input);
