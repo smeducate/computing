@@ -7,6 +7,11 @@ The goal is to build a tiny parser and interpreter for a Lisp like language
 ```
  sudo apt-get install libedit-dev
 ```
+2. Run the following commands to debug core files
+```
+  set ulimit -c unlimited
+  gdb <executable> core
+```
 
 
 ###Resources
