@@ -56,6 +56,7 @@ Courses
 - [CS 106A - Programming Methodology, Stanford University](http://see.stanford.edu/see/lecturelist.aspx?coll=824a47e1-135f-4508-a5aa-866adcae1111)
 - [CS 106B - Programming Abstractions, Stanford University](http://see.stanford.edu/see/lecturelist.aspx?coll=11f4f422-5670-4b4c-889c-008262e09e4e)
 - [CS 107 - Programming Paradigms, Stanford University](http://see.stanford.edu/see/lecturelist.aspx?coll=2d712634-2bf1-4b55-9a3a-ca9d470755ee)
+- [ Banner From NAND to Tetris Building a Modern Computer From First Principles](http://www.nand2tetris.org/software.php)
 
 ------
 
